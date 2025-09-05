@@ -42,12 +42,12 @@ $(PRINTF):
 
 clean:
 	@$(RM) $(OBJS)
+	@$(RM) -r $(MLX_DIR)
 	@make -C $(LIBFT_DIR) clean
 	@make -C $(PRINTF_DIR) clean
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(RM) -r $(MLX_DIR)
 	@make -C $(LIBFT_DIR) fclean
 	@make -C $(PRINTF_DIR) fclean
 

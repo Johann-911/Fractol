@@ -6,7 +6,7 @@
 /*   By: jtoumani <jtoumani@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:25:58 by jtoumani          #+#    #+#             */
-/*   Updated: 2025/07/17 19:33:47 by jtoumani         ###   ########.fr       */
+/*   Updated: 2025/07/18 11:57:47 by jtoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,27 @@ typedef struct s_struct
 	int			color_shift;
 }				t_struct;
 
+// initialaizing 
 void			init_fractol(t_struct *fractol);
 void			init_all(t_struct *fractol);
+
+// parsing
 void			parsing(int argc, char **argv, t_struct *fractol);
-void			draw_fractol(void *param);
-void			handle_key(mlx_key_data_t keydata, void *param);
-void			handle_scroll(double xdelta, double ydelta, void *param);
-double			atod(char *str);
 bool			is_valid_nbr(char *str);
-void			handle_error(void);
+double			atod(char *str);
+
+// drawing
+void			draw_fractol(void *param);
+void			calc_pos(t_struct *f, int x, int y);
 int				mandelbrot(double real, double imag, int max_iter);
 int				julia_iter(double real, double imag, t_struct *f);
 int				burning_ship(double real, double imag, int max_iter);
 uint32_t		get_color(int iter, int max_iter, int shift, const char *name);
-void			calc_pos(t_struct *f, int x, int y);
 uint32_t		get_color_two(double t, int mode);
+
+// hooks
+void			handle_key(mlx_key_data_t keydata, void *param);
+void			handle_scroll(double xdelta, double ydelta, void *param);
+void			handle_error(void);
 
 #endif

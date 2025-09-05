@@ -6,7 +6,7 @@
 /*   By: jtoumani <jtoumani@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 12:16:58 by jtoumani          #+#    #+#             */
-/*   Updated: 2025/07/17 18:43:08 by jtoumani         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:05:09 by jtoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,15 @@ bool	is_valid_nbr(char *str)
 		return (false);
 	while (*str)
 	{
-		if (!((*str >= '0' && *str <= '9') || *str == '.'))
+		if (!(*str >= '0' && *str <= '9'))
 			return (false);
 		str++;
+		if(*str == '.')
+		{
+			str++;
+			if(*str == '.')	
+				return false;
+		}
 	}
 	nbr = atod(str);
 	if (nbr > 2 || nbr < -2)
